@@ -15,15 +15,38 @@ We should be able to check if a book is currently available
 
 public class Book {
     // Attributes
-    String title;
-    String author;
-    String isbn;
-    double price;
-    int numberOfPages;
-    boolean isAvailable;
+    private String title;
+    private String author;
+    private String isbn;
+    private double price;
+    private int numberOfPages;
+    private boolean isAvailable;
+
+    public Book(String title, String author, String isbn, double price, int numberOfPages, boolean isAvailable) {
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+        this.price = price;
+        this.numberOfPages = numberOfPages;
+        this.isAvailable = isAvailable;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setPrice(double price) {
+        // control to check who is changing the price
+        // if(admin)
+        this.price = price;
+    }
 
     // Behaviours
-    void borrow() {
+    public void borrow() {
         if (isAvailable) {
             isAvailable = false;
             System.out.println(title + " has been borrowed");
@@ -32,12 +55,12 @@ public class Book {
         }
     }
 
-    void returnBook() {
+    public void returnBook() {
         isAvailable = true;
         System.out.println(title + " has been returned");
     }
 
-    void displayInfo() {
+    public void displayInfo() {
         System.out.println("Title: " + title);
         System.out.println("Author:" + author);
         System.out.println("ISBN:" + isbn);
@@ -45,6 +68,4 @@ public class Book {
         System.out.println("Pages: " + numberOfPages);
         System.out.println("Available: " + isAvailable);
     }
-
-
 }

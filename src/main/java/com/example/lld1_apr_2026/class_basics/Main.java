@@ -32,6 +32,6 @@ public class Main {
         System.out.println("DEBUG");
 
 
-        Book book = new Book();
+//        Book book = new Book();
     }
 }
