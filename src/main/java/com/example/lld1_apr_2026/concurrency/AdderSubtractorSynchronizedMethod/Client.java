@@ -1,7 +1,4 @@
-package com.example.lld1_apr_2026.concurrency.AdderSubtractorSynchronized;
-
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+package com.example.lld1_apr_2026.concurrency.AdderSubtractorSynchronizedMethod;
 
 public class Client {
     public static void main(String[] args) throws InterruptedException {
@@ -24,6 +21,6 @@ public class Client {
 
         t2.join();
 
-        System.out.println("Final value: " + count.value);
+        System.out.println("Final value: " + count.getValue());
     }
 }

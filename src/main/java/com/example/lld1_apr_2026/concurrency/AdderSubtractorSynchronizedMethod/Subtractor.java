@@ -1,9 +1,4 @@
-package com.example.lld1_apr_2026.concurrency.AdderSubtractorSynchronized;
-
-import java.util.ArrayDeque;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
+package com.example.lld1_apr_2026.concurrency.AdderSubtractorSynchronizedMethod;
 
 public class Subtractor implements Runnable{
     private Count count;
@@ -15,18 +10,25 @@ public class Subtractor implements Runnable{
     @Override
     public void run() {
         for (int i = 1; i <= 10000; i++) {
-            synchronized (count) { //Lock on the shared object
-                count.value -= i;
-                // some other vairable x
-            }
+                count.decrementBy(i);
         }
-
-        /*
-        lock.lock();
-        --
-        --
-        --
-        lock.unlock();
-         */
     }
 }
+
+/*
+count1: incrementBy(), decrementBy() ->
+
+count2:
+
+T1 -> incrementBy() count1
+T2 -> incrementBy() count2
+
+
+T1 -> incrementBy() count1
+T2 -> decrementBy() count2
+
+T1 -> incrementBy() count1
+T2 -> decrementBy() count1
+
+
+ */

@@ -1,15 +1,14 @@
-package com.example.lld1_apr_2026.concurrency.AdderSubtractor;
+package com.example.lld1_apr_2026.concurrency.AdderSubtractorSynchronized;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Client {
     public static void main(String[] args) throws InterruptedException {
-        Lock lock = new ReentrantLock();
 
         Count count = new Count();
-        Adder adder = new Adder(count, lock);
-        Subtractor subtractor = new Subtractor(count, lock);
+        Adder adder = new Adder(count);
+        Subtractor subtractor = new Subtractor(count);
 
         Thread t1 = new Thread(adder);
         Thread t2 = new Thread(subtractor);

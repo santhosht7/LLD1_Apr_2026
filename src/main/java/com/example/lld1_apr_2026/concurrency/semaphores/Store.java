@@ -1,32 +1,27 @@
-package com.example.lld1_apr_2026.concurrency.producerConsumer;
+package com.example.lld1_apr_2026.concurrency.semaphores;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class Store {
-    private int maxSize;
-    private List<Object> items;
+    private Queue<Object> items;
 
-    public Store(int maxSize) {
-        this.maxSize = maxSize;
-        this.items = new ArrayList<>();
+    public Store() {
+        this.items = new ConcurrentLinkedDeque<>();
     }
 
-    public int getMaxSize() {
-        return maxSize;
-    }
-
-    public List<Object> getItems() {
+    public Queue<Object> getItems() {
         return items;
     }
 
-    public void addItem(Object item) {
-        items.add(item);
-        System.out.println("Producer added item. Current size: " + items.size());
+    public void addItem(int id) {
+        items.add(new Object());
+        System.out.println("Item Added. Size is: " + items.size() + " By thread: " + id);
     }
 
-    public void removeItem() {
-        Object item = items.remove(items.size() - 1);
-        System.out.println("Consumer removed item. Current size: " + items.size());
+    public void removeItem(int id) {
+        items.remove();
+        System.out.println("Item Removed. Size is: " + items.size() + " By thread: " + id);
     }
 }
